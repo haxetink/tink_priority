@@ -1,0 +1,6 @@
+-cp src
+-cp tests
+-cp ../tink_core/src
+-main Run
+-js bin/tests.js
+#iota start Run.bat

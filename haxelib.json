@@ -1,0 +1,11 @@
+{
+	"name": "tink_priority",
+	"url" : "http://haxetink.org/tink_priority",
+	"license": "MIT",
+	"tags": ["tink", "cross", "utility", "priority", "queue", "plugin"],
+	"description": "Tinkerbell Priotization",
+	"version": "0.0.0",
+	"releasenote": "Initial version",
+	"contributors": ["back2dos"], 
+	"classPath": "src" 
+}
