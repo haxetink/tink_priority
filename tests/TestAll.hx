@@ -79,11 +79,11 @@ class TestAll extends Base {
 		var handle:Handle = null;
 		return handle = {
 			before: function (item:Int) {
-				ret.before = id(item);
+				@:privateAccess ret.before = id(item);
 				return handle;
 			},
 			after: function (item:Int) {
-				ret.after = id(item);
+				@:privateAccess ret.after = id(item);
 				return handle;
 			},
 		}

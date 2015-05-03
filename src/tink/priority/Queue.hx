@@ -8,12 +8,47 @@ abstract Queue<T>({ items: Array<Item<T>>, ?sequence:Array<T> }) {
 	public function new() 
 		this = { items: [], sequence: [] };
 	
+	inline function invalidate()
+		this.sequence = null;
+		
 	public function add(item:Item<T>, ?pos:PosInfos) {
 		if (item.id == null)
-			item.id = pos;
+				@:privateAccess item.id = pos;
+		
+		for (i in 0...this.items.length)
+			if (this.items[i].id == item.id) {
+				var old = this.items[i];
+				this.items[i] = item;
+				
+				if (this.sequence == null) return;
+				
+				if (old.after == item.after && old.before == item.before) return;
+				
+				switch item.after {
+					case null:
+					case after:
+						for (i in 0...i) 
+							if (after.matches(this.items[i])) {
+								invalidate();
+								return;
+							}
+				}
+				
+				switch item.before {
+					case null:
+					case before:
+						for (i in i+1...this.items.length) 
+							if (before.matches(this.items[i])) {
+								invalidate();
+								return;
+							}
+				}
+				
+				return;
+			}
 			
+		invalidate();
 		this.items.push(item);
-		this.sequence = null;
 	}
 	
 	public function whenever(data:T, ?id:ID, ?pos:PosInfos)
@@ -71,6 +106,6 @@ abstract Queue<T>({ items: Array<Item<T>>, ?sequence:Array<T> }) {
 		return this.sequence;
 	}
 	
-	@:to function toArray():Array<T> 
+	@:to inline function toArray():Array<T> 
 		return getData();
 }

@@ -4,13 +4,20 @@ import haxe.PosInfos;
 
 using StringTools;
 
-abstract ID({ cls:String, ?method:String }) {
+abstract ID({ cls:String, ?method:String, str:String }) {
 	
 	public var cls(get, never):String;
 	public var method(get, never):Null<String>;
 	
 	public function new(cls:String, ?method:String)
-		this = { cls: cls, method: method };
+		this = { 
+			cls: cls, 
+			method: method,
+			str: 
+					if (method == null) cls
+					else '$cls::$method'
+
+		};
 		
 	inline function get_cls() 
 		return this.cls;
@@ -18,10 +25,8 @@ abstract ID({ cls:String, ?method:String }) {
 	inline function get_method()
 		return this.method;
 		
-	@:to public function toString() 
-		return 
-			if (this.method == null) this.cls;
-			else this.cls + '::' + this.method;
+	@:to public inline function toString():String 
+		return this.str;
 	
 	@:from static function ofString(s:String) {
 		var parts = s.split('::');
@@ -30,4 +35,7 @@ abstract ID({ cls:String, ?method:String }) {
 	
 	@:from static function ofPosInfos(pos:PosInfos)
 		return new ID(pos.className, pos.methodName);
+		
+	@:op(A == B) static function equals(a:ID, b:ID) 
+		return a.toString() == b.toString();
 }
