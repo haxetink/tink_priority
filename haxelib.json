@@ -1,1 +1,20 @@
-{"name":"tink_priority","license":"MIT","tags":["tink","cross","utility","priority","queue","plugin"],"classPath":"src","description":"Tinkerbell Priotization","contributors":["back2dos"],"releasenote":"Minor enhancements.","version":"0.1.0","url":"http://haxetink.org/tink_priority"}
+{
+	"name": "tink_priority",
+	"license": "MIT",
+	"tags": [
+		"tink",
+		"cross",
+		"utility",
+		"priority",
+		"queue",
+		"plugin"
+	],
+	"classPath": "src",
+	"description": "Tinkerbell Priotization",
+	"contributors": [
+		"back2dos"
+	],
+	"releasenote": "Minor enhancements.",
+	"version": "0.1.0",
+	"url": "http://haxetink.org/tink_priority"
+}
