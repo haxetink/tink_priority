@@ -37,5 +37,10 @@ abstract ID({ cls:String, ?method:String, str:String }) {
 		return new ID(pos.className, pos.methodName);
 		
 	@:op(A == B) static function equals(a:ID, b:ID) 
-		return a.toString() == b.toString();
+		return 
+			switch [a, b] {
+				case [null, null]: true;
+				case [null, _] | [_, null]: false;
+				default: a.toString() == b.toString();
+			}
 }
