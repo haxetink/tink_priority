@@ -14,7 +14,7 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Release 0.1.1",
-	"version": "0.1.1",
+	"releasenote": "Allow promoting IDs to selectors.",
+	"version": "0.1.2",
 	"url": "http://haxetink.org/tink_priority"
 }
