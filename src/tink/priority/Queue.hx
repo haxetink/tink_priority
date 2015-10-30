@@ -60,8 +60,8 @@ abstract Queue<T>({ items: Array<Item<T>>, ?sequence:Array<T> }) {
 	public function after(s:Selector<T>, data:T, ?id:ID, ?pos:PosInfos)
 		add({ data: data, id: id, after: s }, pos);
 	
-	public function between(before:Selector<T>, after:Selector<T>, data:T, ?id:ID, ?pos:PosInfos)
-		add({ data: data, id: id, after: after, before: before }, pos);
+	public function between(first:Selector<T>, then:Selector<T>, data:T, ?id:ID, ?pos:PosInfos)
+		add({ data: data, id: id, after: first, before: then }, pos);
 	
 	public function iterator():Iterator<T>
 		return toArray().iterator();

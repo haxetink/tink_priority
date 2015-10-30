@@ -1,30 +1,15 @@
 #each
 -cp src
 -cp tests
+-lib tink_core 
 -dce full
 -main Run
--D force_tink_loops
 --each
 
-#flash8
--swf-version 8
--swf bin/unit8.swf
-
 #java
---next
--java bin/java
--cmd java -jar bin/java/java.jar
-
-
-#as3
---next
--as3 bin/as3
--cmd mxmlc -static-link-runtime-shared-libraries=true -debug bin/as3/__main__.as --output bin/unit9_as3.swf
-
-#flash9
---next
--swf-version 11
--swf bin/unit9.swf
+#--next
+#-java bin/java
+#-cmd java -jar bin/java/Run.jar
 
 #js
 --next
@@ -39,14 +24,3 @@
 #macro
 --next
 --interp
-
-#php
---next
--php bin/php
--cmd php bin/php/index.php
-
-#cpp
---next
--cpp bin/cpp
--cmd bin/cpp/Run
-
