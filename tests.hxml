@@ -1,26 +1,3 @@
-#each
--cp src
--cp tests
--lib tink_core 
--dce full
+-lib tink_core
+-cp ./tests/
 -main Run
---each
-
-#java
-#--next
-#-java bin/java
-#-cmd java -jar bin/java/Run.jar
-
-#js
---next
--js bin/unit.js
--cmd node bin/unit.js
-
-#neko
---next
--neko bin/unit.n
--cmd neko bin/unit.n
-
-#macro
---next
---interp
