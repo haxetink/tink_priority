@@ -37,7 +37,7 @@ class Base extends TestCase {
 		currentTest.posInfos = c;
 		throw currentTest;
 	}
-	function throws<A>(f:Void->Void, t:PhysicalType<A>, ?check:A->Bool, ?pos:PosInfos):Void {
+	function throws<T>(f:Void->Void, t:PhysicalType<T>, ?check:T->Bool, ?pos:PosInfos):Void {
 		try f()
 		catch (e:Dynamic) {
 			if (!t.check(e)) fail('Exception $e not of type $t', pos);
@@ -47,54 +47,4 @@ class Base extends TestCase {
 		}
 		fail('no exception thrown', pos);
 	}
-}
-
-class TestBase extends Base {
-	function testThrowInst() {
-		throws(
-			function () throw 'foo',
-			String
-		);
-		throws(
-			function () assertTrue(false),
-			TestStatus
-		);
-		throws(
-			function () 
-				throws(
-					function () throw 'foo',
-					Array
-				),
-			TestStatus
-		);		
-	}
-	function testThrowEnum() {
-		throws(
-			function () throw Left(true),
-			Either
-		);
-		throws(
-			function () throws(
-				function () throw Left(true),
-				String
-			),
-			TestStatus
-		);
-	}
-	function testThrowAndCheck() {
-		throws(
-			function () throw 'foo',
-			String,
-			function (s) return s == 'foo'
-		);
-		throws(
-			function () 
-				throws(
-					function () throw 'foo',
-					String,
-					function (s) return s == 'bar'
-				),
-			TestStatus
-		);			
-	}	
 }
