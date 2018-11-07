@@ -51,6 +51,15 @@ abstract Queue<T>({ items: Array<Item<T>>, ?sequence:Array<T> }) {
     this.items.push(item);
   }
   
+  public function remove(data:T) {
+    for(item in this.items) if(item.data == data) {
+      this.items.remove(item);
+      invalidate();
+      return true;
+    }
+    return false;
+  }
+  
   public function whenever(data:T, ?id:ID, ?pos:PosInfos)
     add({ data: data, id: id }, pos);
   
