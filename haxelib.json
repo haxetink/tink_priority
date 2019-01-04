@@ -14,7 +14,7 @@
 	"contributors": [
 		"back2dos"
 	],
-	"releasenote": "Give tink.priority.Queue::between more intuitive behavior.",
-	"version": "0.1.3",
+	"releasenote": "Added Queue#remove()",
+	"version": "0.1.4",
 	"url": "http://haxetink.org/tink_priority"
 }
